@@ -1,0 +1,2 @@
+import{Controller,Get}from'@nestjs/common';import{ApiTags}from'@nestjs/swagger';import{InjectConnection}from'@nestjs/mongoose';import{Connection}from'mongoose';
+@ApiTags('Health')@Controller('health')export class HealthController{constructor(@InjectConnection()private connection:Connection){}@Get()check(){return{status:'ok',service:'MediConnect API',database:this.connection.readyState===1?'connected':'disconnected',timestamp:new Date().toISOString()};}}

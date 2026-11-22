@@ -1,0 +1,2 @@
+import{Module}from'@nestjs/common';import{MongooseModule}from'@nestjs/mongoose';import{Availability,AvailabilitySchema}from'./schemas/availability.schema';import{Doctor,DoctorSchema}from'../doctors/schemas/doctor.schema';import{AvailabilityController}from'./availability.controller';import{AvailabilityService}from'./availability.service';
+@Module({imports:[MongooseModule.forFeature([{name:Availability.name,schema:AvailabilitySchema},{name:Doctor.name,schema:DoctorSchema}])],controllers:[AvailabilityController],providers:[AvailabilityService]})export class AvailabilityModule{}

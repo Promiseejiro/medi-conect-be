@@ -1,0 +1,2 @@
+import{Module}from'@nestjs/common';import{MongooseModule}from'@nestjs/mongoose';import{BlockedDate,BlockedDateSchema}from'./schemas/blocked-date.schema';import{Doctor,DoctorSchema}from'../doctors/schemas/doctor.schema';import{BlockedDatesController}from'./blocked-dates.controller';import{BlockedDatesService}from'./blocked-dates.service';
+@Module({imports:[MongooseModule.forFeature([{name:BlockedDate.name,schema:BlockedDateSchema},{name:Doctor.name,schema:DoctorSchema}])],controllers:[BlockedDatesController],providers:[BlockedDatesService]})export class BlockedDatesModule{}
