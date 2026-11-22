@@ -1,7 +1,6 @@
 # MediConnect Backend (NestJS + MongoDB)
 
 This is a NestJS/Mongoose implementation of the MediConnect backend, using the modular NestJS structure and conventions from the supplied Mana Health backend.
-
 ## Requirements
 - Node.js 20+ (Node 22 recommended)
 - npm
