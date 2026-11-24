@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
@@ -9,9 +9,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const jwtSecret = config.get<string>('JWT_SECRET');
 
     if (!jwtSecret) {
-      throw new UnauthorizedException(
-        'JWT_SECRET is not configured',
-      );
+      throw new Error('JWT_SECRET is not configured');
     }
 
     super({
@@ -21,7 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: any) {
+  async validate(payload: { sub: string; email: string; role: string }) {
     return {
       id: payload.sub,
       userId: payload.sub,
