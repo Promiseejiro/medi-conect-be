@@ -6,6 +6,7 @@ import {
   MinLength,
   IsInt,
   Min,
+  IsDateString,
 } from 'class-validator';
 
 import { UserRole } from '../../users/schemas/user.schema';
@@ -31,6 +32,18 @@ export class RegisterDto {
   @IsOptional()
   @IsEnum(UserRole)
   role?: UserRole;
+
+  @IsOptional()
+  @IsDateString()
+  dateOfBirth?: string;
+
+  @IsOptional()
+  @IsString()
+  gender?: string;
+
+  @IsOptional()
+  @IsString()
+  address?: string;
 
   @IsOptional()
   @IsString()
